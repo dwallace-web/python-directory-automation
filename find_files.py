@@ -10,24 +10,23 @@ files = os.listdir(path)
 date_prefix = date.today()
 # version number for global variable
 version = 0
-
-print('todays date is ' + str(date_prefix))
-
-# confirm the CWD
-print('the CWD is: ' + os.getcwd())
+# build the path
+string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
 
 # create a new folder -- add prefix -- confirm verison number
-os.mkdir(str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE2')
+os.mkdir(string)
 
-# add login to iterate version number
-
+# add login to iterate version number here
+#   if
 
 # confirm director and show all files in the directory
-print('current directory is ' + path)
+print('the CWD is: ' + os.getcwd())
 for file in files:
     print('Here is one of all files in this folder.... ' + file)
 
-
 # find only files that fit a criteria - .txt
+# not working?????
 for file in glob.glob('*.txt'):
     print('txt file --> ' + file)
+    # for each file that matches copy the file and place it in the correct folder
+    # shutil.copy(r'\\{file}', r'\\{string}\\')
