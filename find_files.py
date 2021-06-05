@@ -14,11 +14,10 @@ version = 0
 string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
 
 # add logic to iterate version number here
-print(os.getcwd().isdir(string))
+print(os.getcwd().isdir('\{string}'))
 
 # create a new folder -- add prefix -- confirm verison number
 os.mkdir(string)
-
 
 # confirm director and show all files in the directory
 print('the CWD is: ' + os.getcwd())
