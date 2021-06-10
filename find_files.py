@@ -1,6 +1,7 @@
 from datetime import date
 import os
 import glob
+from shutil import copy2, copyfile
 
 # find all files
 path = os.getcwd()
@@ -27,14 +28,16 @@ else:
     # create a new folder
     os.mkdir(string)
 
-# confirm director and show all files in the directory
-print('the CWD is: ' + os.getcwd())
-for file in files:
-    print('Here is one of all files in this folder.... ' + file)
+# confirm and show all files in the directory
+# print('the CWD is: ' + os.getcwd())
+# for file in files:
+#     print('Here is one of all files in this folder.... ' + file)
 
 # find only files that fit a criteria - .txt
-# not working?????
 for file in glob.glob('*.txt'):
     print('txt file --> ' + file)
+    print(os.getcwd() + '\\' + file)
+    print(os.getcwd() + '\\' + string + '\\' + file)
+    copyfile(os.getcwd() + '\\' + file, os.getcwd() +
+             '\\' + string + '\\' + file)
     # for each file that matches copy the file and place it in the correct folder
-    # shutil.copy(r'\\{file}', r'\\{string}\\')
