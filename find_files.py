@@ -1,6 +1,5 @@
 from datetime import date
 import os
-import shutil
 import glob
 
 # find all files
@@ -9,15 +8,24 @@ files = os.listdir(path)
 # todays date prefix
 date_prefix = date.today()
 # version number for global variable
+global version
 version = 0
 # build the path
+global string
 string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
+print(string)
 
-# add logic to iterate version number here
-print(os.getcwd().isdir('\{string}'))
+# iterate version number here
+print(os.path.exists(string))
 
-# create a new folder -- add prefix -- confirm verison number
-os.mkdir(string)
+while os.path.exists(string) == True:
+    version += 1
+    string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
+    print(version)
+    print(string)
+else:
+    # create a new folder
+    os.mkdir(string)
 
 # confirm director and show all files in the directory
 print('the CWD is: ' + os.getcwd())
