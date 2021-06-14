@@ -3,6 +3,11 @@ import os
 import glob
 from shutil import copy2, copyfile
 
+# ADD INPUT FOR TYPE of file
+lookfor = input("Archive All Files like: ")
+# add input for path name
+storein = input("Put the Files in this Folder: ")
+
 # find all files
 path = os.getcwd()
 files = os.listdir(path)
@@ -13,7 +18,7 @@ global version
 version = 0
 # build the path
 global string
-string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
+string = str(date_prefix) + '_V' + str(version) + '_' + str(storein)
 print(string)
 
 # iterate version number here
@@ -21,7 +26,7 @@ print(os.path.exists(string))
 
 while os.path.exists(string) == True:
     version += 1
-    string = str(date_prefix) + '_V' + str(version) + '_' + 'EXAMPLE'
+    string = str(date_prefix) + '_V' + str(version) + '_' + str(storein)
     print(version)
     print(string)
 else:
@@ -34,8 +39,14 @@ else:
 #     print('Here is one of all files in this folder.... ' + file)
 
 # find only files that fit a criteria - .txt
-for file in glob.glob('*.txt'):
-    print('txt file --> ' + file)
+for file in glob.glob('*' + lookfor + '*'):
+
+    # add logic to skip folders
+    if os.path.isdir(file) == True:
+        print('this is a directory -->' + file)
+        continue
+
+    print('Found ---> ' + file)
     print(os.getcwd() + '\\' + file)
     print(os.getcwd() + '\\' + string + '\\' + file)
     copyfile(os.getcwd() + '\\' + file, os.getcwd() +
